@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/top_chart_nav"
+    app:startDestination="@id/artistListFragment">
+
+    <fragment
+        android:id="@+id/artistDetailsFragment"
+        android:name="com.example.lastfmtopcharts.view.ArtistDetailsFragment"
+        android:label="fragment_artist_details"
+        tools:layout="@layout/fragment_artist_details" >
+        <action
+            android:id="@+id/action_list"
+            app:destination="@id/artistListFragment" />
+        <argument
+            android:name="artist"
+            app:argType="com.example.lastfmtopcharts.model.Artist" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistListFragment"
+        android:name="com.example.lastfmtopcharts.view.ArtistListFragment"
+        android:label="fragment_artist_list"
+        tools:layout="@layout/fragment_artist_list" >
+        <action
+            android:id="@+id/action_detail"
+            app:destination="@id/artistDetailsFragment" />
+    </fragment>
+</navigation>

@@ -8,7 +8,9 @@ import com.example.lastfmtopcharts.di.AppModule
 import com.example.lastfmtopcharts.di.DaggerViewModelComponent
 import com.example.lastfmtopcharts.model.TopArtistChart
 import com.example.lastfmtopcharts.model.TopArtistChartAPIService
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -18,13 +20,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val topArtistChart by lazy { MutableLiveData<TopArtistChart>() }
 
-    constructor(application: Application, test: Boolean = true): this(application) {
-        injected = true
-    }
+    val loadError by lazy { MutableLiveData<Boolean>() }
+
+    val loading by lazy { MutableLiveData<Boolean>() }
+//
+//    constructor(application: Application, test: Boolean = true): this(application) {
+//        injected = true
+//    }
 
 
     @Inject
     lateinit var topArtistChartAPIService: TopArtistChartAPIService
+
 
     init {
         DaggerViewModelComponent
@@ -34,11 +41,34 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             .inject(this)
     }
 
-    val getTopArtistChart = liveData(Dispatchers.IO) {
-        val retrieveTopArtistChart = topArtistChartAPIService.getTopArtistChart()
+//    fun inject() {
+//        if (!injected) {
+//            DaggerViewModelComponent
+//                .builder()
+//                .appModule(AppModule(getApplication()))
+//                .build()
+//                .inject(this)
+//        }
+//    }
 
-        emit(retrieveTopArtistChart)
+     fun refresh() {
+//        inject()
+        loading.value = true
+        updateValue(getTopArtistChart.value!!)
     }
 
+    val getTopArtistChart = liveData(Dispatchers.IO) {
+        val retrieveTopArtistChart = topArtistChartAPIService.getTopArtistChart()
+        emit(retrieveTopArtistChart)
+        updateValue(retrieveTopArtistChart)
+    }
+
+    private fun updateValue(value: TopArtistChart) {
+       CoroutineScope(Dispatchers.Main).launch {
+           loadError.value = false
+           topArtistChart.value = value
+           loading.value = false
+       }
+    }
 
 }
