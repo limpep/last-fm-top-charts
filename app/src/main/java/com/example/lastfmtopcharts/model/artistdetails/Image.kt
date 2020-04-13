@@ -1,4 +1,4 @@
-package com.example.lastfmtopcharts.model
+package com.example.lastfmtopcharts.model.artistdetails
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName
 
 data class Image(
     @SerializedName("#text")
-    val imageURL: String?,
-    val size: String?
-): Parcelable {
+    var url: String?,
+    var size: String?
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString()
@@ -16,7 +16,7 @@ data class Image(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(imageURL)
+        parcel.writeString(url)
         parcel.writeString(size)
     }
 

@@ -7,15 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.lastfmtopcharts.R
-import com.example.lastfmtopcharts.model.Artist
-import com.example.lastfmtopcharts.model.TopArtistChart
+import com.example.lastfmtopcharts.model.chart.TopArtistChart
 import com.example.lastfmtopcharts.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_artist_list.*
-import kotlinx.coroutines.delay
 
 /**
  * A simple [Fragment] subclass.
@@ -72,9 +69,9 @@ class ArtistListFragment : Fragment() {
             artistTopChartList.visibility = View.GONE
             listError.visibility =View.GONE
             loadingView.visibility = View.VISIBLE
-
             viewModel.refresh()
             refreshLayout.isRefreshing = false
+            artistTopChartList.visibility = View.VISIBLE
         }
 
 //        viewModel.getTopArtistChart.observe(viewLifecycleOwner, Observer {

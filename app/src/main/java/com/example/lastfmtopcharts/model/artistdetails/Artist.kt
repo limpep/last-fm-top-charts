@@ -1,36 +1,45 @@
-package com.example.lastfmtopcharts.model
+package com.example.lastfmtopcharts.model.artistdetails
 
 import android.os.Parcel
 import android.os.Parcelable
 import java.util.ArrayList
 
 data class Artist(
-    val image: ArrayList<Image>?,
-    val listeners: String?,
-    val mbid: String?,
-    val name: String?,
-    val playcount: String?,
-    val streamable: String?,
-    val url: String?
-):Parcelable {
+    var bio: Bio?,
+    var image: ArrayList<Image>?,
+    var mbid: String?,
+    var name: String?,
+    var ontour: String?,
+    var similar: Similar?,
+    var stats: Stats?,
+    var streamable: String?,
+    var tags: Tags?,
+    var url: String?
+) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readParcelable(Bio::class.java.classLoader),
         parcel.createTypedArrayList(Image),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readParcelable(Similar::class.java.classLoader),
+        parcel.readParcelable(Stats::class.java.classLoader),
         parcel.readString(),
-        parcel.readString(),
+        parcel.readParcelable(Tags::class.java.classLoader),
         parcel.readString()
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeParcelable(bio, flags)
         parcel.writeTypedList(image)
-        parcel.writeString(listeners)
         parcel.writeString(mbid)
         parcel.writeString(name)
-        parcel.writeString(playcount)
+        parcel.writeString(ontour)
+        parcel.writeParcelable(similar, flags)
+        parcel.writeParcelable(stats, flags)
         parcel.writeString(streamable)
+        parcel.writeParcelable(tags, flags)
         parcel.writeString(url)
     }
 

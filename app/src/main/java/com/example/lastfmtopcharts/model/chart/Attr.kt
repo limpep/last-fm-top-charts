@@ -1,4 +1,4 @@
-package com.example.lastfmtopcharts.model
+package com.example.lastfmtopcharts.model.chart
 
 import android.os.Parcel
 import android.os.Parcelable

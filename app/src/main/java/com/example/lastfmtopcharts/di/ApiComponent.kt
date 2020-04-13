@@ -1,7 +1,7 @@
 package com.example.lastfmtopcharts.di
 
 
-import com.example.lastfmtopcharts.model.TopArtistChartAPIService
+import com.example.lastfmtopcharts.service.LastFMAPIService
 
 import dagger.Component
 import javax.inject.Singleton
@@ -10,6 +10,6 @@ import javax.inject.Singleton
 @Component(modules = [ApiModule::class])
 interface ApiComponent {
 
-    fun inject(service: TopArtistChartAPIService)
+    fun inject(service: LastFMAPIService)
 
 }

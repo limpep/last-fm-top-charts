@@ -15,7 +15,7 @@
             app:destination="@id/artistListFragment" />
         <argument
             android:name="artist"
-            app:argType="com.example.lastfmtopcharts.model.Artist" />
+            app:argType="com.example.lastfmtopcharts.model.chart.Artist" />
     </fragment>
     <fragment
         android:id="@+id/artistListFragment"

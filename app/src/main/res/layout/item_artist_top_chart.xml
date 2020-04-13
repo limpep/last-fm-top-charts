@@ -7,7 +7,7 @@
     <data>
         <variable
             name="artist"
-            type="com.example.lastfmtopcharts.model.Artist" />
+            type="com.example.lastfmtopcharts.model.chart.Artist" />
         <variable
             name="listener"
             type="com.example.lastfmtopcharts.view.ArtistClickListener" />

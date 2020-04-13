@@ -1,18 +1,14 @@
 package com.example.lastfmtopcharts.view
 
-import android.database.DatabaseUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.ListFragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lastfmtopcharts.R
 import com.example.lastfmtopcharts.databinding.ItemArtistTopChartBinding
-import com.example.lastfmtopcharts.model.Artist
-import com.example.lastfmtopcharts.model.TopArtistChart
-import kotlinx.android.synthetic.main.item_artist_top_chart.view.*
+import com.example.lastfmtopcharts.model.chart.Artist
 
 class TopArtistChartAdapter(private val topArtistChart: ArrayList<Artist>):
     RecyclerView.Adapter<TopArtistChartAdapter.TopArtistChartViewHolder>(), ArtistClickListener {
@@ -37,6 +33,7 @@ class TopArtistChartAdapter(private val topArtistChart: ArrayList<Artist>):
 
     override fun onBindViewHolder(holder: TopArtistChartViewHolder, position: Int) {
         holder.view.artist = topArtistChart[position]
+        holder.view.listener = this
     }
 
     override fun onClick(v: View) {

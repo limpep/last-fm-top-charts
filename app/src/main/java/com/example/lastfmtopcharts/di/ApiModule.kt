@@ -2,9 +2,8 @@ package com.example.lastfmtopcharts.di
 
 import android.os.Build
 import com.example.lastfmtopcharts.BuildConfig
-import com.example.lastfmtopcharts.model.TopArtistChartAPI
-import com.example.lastfmtopcharts.model.TopArtistChartAPIService
-import com.google.gson.Gson
+import com.example.lastfmtopcharts.model.api.LastFMAPICalls
+import com.example.lastfmtopcharts.service.LastFMAPIService
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -17,17 +16,17 @@ import javax.inject.Singleton
 @Module
 open class ApiModule {
 
-    private val BASE_URL = "http://ws.audioscrobbler.com/2.0/"
+    private val BASE_URL = "https://ws.audioscrobbler.com/2.0/"
 
     @Provides
     @Singleton
-    fun provideAnimalApi(okHttpClient: OkHttpClient): TopArtistChartAPI {
+    fun provideLastFmApi(okHttpClient: OkHttpClient): LastFMAPICalls {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .client(okHttpClient)
             .build()
-            .create(TopArtistChartAPI::class.java)
+            .create(LastFMAPICalls::class.java)
     }
 
     external fun stringFromJNI(): String
@@ -72,7 +71,7 @@ open class ApiModule {
 
     @Singleton
     @Provides
-    open fun provideTopArtistChartAPIService(): TopArtistChartAPIService {
-        return TopArtistChartAPIService()
+    open fun provideLastFMAPIService(): LastFMAPIService {
+        return LastFMAPIService()
     }
 }

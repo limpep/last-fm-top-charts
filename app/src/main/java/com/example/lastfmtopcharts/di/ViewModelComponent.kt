@@ -1,5 +1,6 @@
 package com.example.lastfmtopcharts.di
 
+import com.example.lastfmtopcharts.viewmodel.ArtistDetailsViewModel
 import com.example.lastfmtopcharts.viewmodel.MainViewModel
 import dagger.Component
 import javax.inject.Singleton
@@ -8,5 +9,6 @@ import javax.inject.Singleton
 @Component(modules = [ApiModule::class, AppModule::class])
 interface ViewModelComponent {
 
-    fun inject(viewModel: MainViewModel)
+    fun mainViewModel(viewModel: MainViewModel)
+    fun artistDetailViewModel(viewModel: ArtistDetailsViewModel)
 }

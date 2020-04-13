@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+    <variable name="artist" type="com.example.lastfmtopcharts.model.artistdetails.Artist"/>
+</data>
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ArtistDetailsFragment">
+    tools:context=".view.ArtistDetailsFragment"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+    <ProgressBar
+        android:id="@+id/loadingView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+      />
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:minHeight="200dp"
+        android:imageUrl="@{artist.image[0].url}"
+        android:contentDescription="@string/artist_image_description" />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{artist.name}"
+        tools:text="artiestname"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{artist.ontour}"
+        tools:text="playcount"/>
+
+    <TextView
+        android:id="@+id/listError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/an_error_occured_while_loading_data"
+        android:visibility="gone"
+        />
+
+
+</LinearLayout>
+
+
+</layout>
