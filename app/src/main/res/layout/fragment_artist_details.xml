@@ -33,13 +33,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@{artist.name}"
-        tools:text="artiestname"/>
+        tools:text="artiest name"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{artist.ontour}"
-        tools:text="playcount"/>
+        android:text="@{@string/is_on_tour(artist.ontour)}"
+        tools:text="on tour"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@{artist.bio.content}"
+        tools:text="on bio"/>
 
     <TextView
         android:id="@+id/listError"

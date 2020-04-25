@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/artistDetailsFragment"
         android:name="com.example.lastfmtopcharts.view.ArtistDetailsFragment"
-        android:label="fragment_artist_details"
+        android:label="Artist Details"
         tools:layout="@layout/fragment_artist_details" >
         <action
             android:id="@+id/action_list"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/artistListFragment"
         android:name="com.example.lastfmtopcharts.view.ArtistListFragment"
-        android:label="fragment_artist_list"
+        android:label="Top Artist chart"
         tools:layout="@layout/fragment_artist_list" >
         <action
             android:id="@+id/action_detail"

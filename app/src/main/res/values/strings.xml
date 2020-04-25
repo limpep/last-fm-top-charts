@@ -5,4 +5,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="an_error_occured_while_loading_data">An Error occurred while loading data</string>
     <string name="artist_image_description">Artist image</string>
+    <string name="play_count">Play Count: %s</string>
+    <string name="listen_count">Listen Count: %s</string>
+    <string name="is_on_tour">Is on tour: %s</string>
+    <string name="last_fm_top_artists">Last FM Top Artists</string>
 </resources>
